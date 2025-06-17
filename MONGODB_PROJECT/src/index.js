@@ -67,6 +67,14 @@ app.post("/login", async (req, res) => {
         res.send("wrong Details");
     }
 });
+app.get('/users', async (req, res) => {
+    try {
+        const users = await collection.find({});  // collection is your Mongoose model
+        res.json(users);
+    } catch (err) {
+        res.status(500).send(err.message);
+    }
+});
 
 
 // Define Port for Application
